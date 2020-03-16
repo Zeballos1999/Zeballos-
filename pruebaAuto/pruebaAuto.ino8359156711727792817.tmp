@@ -1,0 +1,40 @@
+int L = 8;
+int L2 = 9;
+int r = 10;
+int r2 = 11;
+int state = 0;
+
+void setup() {
+
+pinMode(L,OUTPUT);
+pinMode(L2,OUTPUT);
+pinMode(r,OUTPUT);
+pinMode(r2,OUTPUT);
+Serial.begin(9600);
+
+}
+
+void loop() {
+  if(Serial.available() > 0){
+  state = Serial.read();
+  Serial.print(state);
+  } 
+  //adelante
+  if (state == 'a') {
+    digitalWrite(L2,1);
+    digitalWrite(r2,1);
+ }
+ //atras
+ if (state == 'b') {
+   digitalWrite(L,1);
+   digitalWrite(r,1);
+ }
+//izquierda
+ if (state == 'c') {
+   digitalWrite(r2,1);
+ }
+//derecha
+  if (state == 'd') {
+  digitalWrite(L2,1);
+ }
+}
